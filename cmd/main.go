@@ -50,7 +50,7 @@ func main() {
 		// Hiển thị short URL cho người dùng click
 		c.HTML(http.StatusOK, "home.html", gin.H{
 			"message":  "URL đã lưu thành công!",
-			"shortUrl": "http://localhost:8080/s/" + shortCode,
+			"shortUrl": "http://localhost:8080/" + shortCode,
 			"original": longUrl,
 		})
 	})
