@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập URL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .message {
+            text-align: center;
+            margin-bottom: 15px;
+            color: green;
+            font-weight: bold;
+        }
+        .short-url {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nhập URL mới</h1>
+
+        <!-- Hiển thị thông báo -->
+        {{ if .message }}
+            <div class="message">{{ .message }}</div>
+        {{ end }}
+
+        <!-- Hiển thị short URL khi có -->
+        {{ if .shortUrl }}
+            <div class="short-url">
+                Short URL: 
+                <a href="{{ .shortUrl }}" target="_blank">{{ .shortUrl }}</a>
+            </div>
+        {{ end }}
+
+        <!-- Form nhập URL -->
+        <form action="/save" method="post">
+            <label>Long URL:</label>
+            <input type="text" name="longUrl" placeholder="https://example.com" required>
+            <button type="submit">Tạo Short URL</button>
+        </form>
+    </div>
+</body>
+</html>
